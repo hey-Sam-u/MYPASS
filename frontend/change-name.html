@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Name</title>
+    <link rel="stylesheet" href="change-name.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h2>Change Display Name</h2>
+        <p class="subtext">
+          Update your name shown on the dashboard.
+          <br />
+          <small class="note"
+            >(Changed name will appear after you log out and log in
+            again.)</small
+          >
+        </p>
+
+        <form id="changeNameForm">
+          <label for="newName">New Name</label>
+          <input
+            type="text"
+            id="newName"
+            placeholder="Enter your new name"
+            required
+          />
+          <button type="submit">Update Name</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Custom Popup -->
+    <div id="popup" class="popup hidden">
+      <div class="popup-box">
+        <p id="popupMessage"></p>
+        <div class="popup-actions">
+          <button id="closePopup">OK</button>
+          <button id="goBack">Go Back</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="change-name.js"></script>
+  </body>
+</html>

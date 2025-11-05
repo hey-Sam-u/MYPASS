@@ -1,0 +1,107 @@
+<!-- File: public/privacy.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Privacy — Secure Cloud</title>
+    <link rel="stylesheet" href="privacy.css" />
+  </head>
+  <body>
+    <main class="policy-wrap">
+      <header class="policy-hero">
+        <h1>Privacy & Security — Simple, honest, strong</h1>
+        <p class="lead">
+          Your files are yours. We help store encrypted bytes — only you can
+          unlock them.
+        </p>
+      </header>
+
+      <section class="policy-card">
+        <h2>How it works (fast)</h2>
+        <ol>
+          <li>You pick a passphrase in your browser.</li>
+          <li>
+            Your files are encrypted in the browser (AES-GCM) before upload.
+          </li>
+          <li>
+            We store only encrypted blobs, salts, and metadata — never your
+            passphrase.
+          </li>
+          <li>
+            To view/download, you supply the passphrase and decryption happens
+            in your browser.
+          </li>
+        </ol>
+      </section>
+
+      <section class="policy-card">
+        <h2>What we collect</h2>
+        <ul>
+          <li>Account email (to identify your vault).</li>
+          <li>
+            Encrypted file blobs, filename, file type, size, upload timestamp.
+          </li>
+          <li>
+            Salt & IV (needed to decrypt client-side) — stored, never secret by
+            themselves.
+          </li>
+        </ul>
+      </section>
+
+      <section class="policy-card">
+        <h2>Security highlights</h2>
+        <ul>
+          <li>Client-side encryption: AES-GCM + 256-bit keys.</li>
+          <li>Passphrases are never sent to or stored on our servers.</li>
+          <li>
+            Authentication: passwords hashed with bcrypt; sessions via
+            short-lived JWTs.
+          </li>
+          <li>Transport: HTTPS only. Server access limited & logged.</li>
+          <li>Backups: encrypted, limited retention, restricted access.</li>
+        </ul>
+      </section>
+
+      <section class="policy-card">
+        <h2>What we DON'T do</h2>
+        <p>
+          We never read or sell your file contents. We do not keep plaintext
+          copies of your files or passphrases. If you lose your passphrase, we
+          cannot decrypt your files — that’s by design.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Limitations & honest note</h2>
+        <p>
+          No system is absolutely risk-free. We work to reduce risk (strong
+          crypto, secure servers), but we cannot promise a 100% guarantee. If
+          you keep weak passphrases or reuse passwords elsewhere, your account
+          can still be compromised — protect your passphrase.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <h2>Your rights</h2>
+        <ul>
+          <li>Delete your account — all encrypted data removed.</li>
+          <li>
+            Request export of metadata or encrypted blobs (we'll provide a
+            downloadable archive).
+          </li>
+          <li>Contact us for support or legal requests (details below).</li>
+        </ul>
+      </section>
+
+      <footer class="policy-footer">
+        <p>
+          Questions or concerns? Ping us:
+          <a href="mailto:YOUR_EMAIL">samirpatil1626@gmail.com</a> · Instagram:
+          <a href="https://instagram.com/YOUR_INSTA">@__patil__42</a>
+        </p>
+        <small>© Secure Cloud — we build privacy that you control.</small>
+      </footer>
+    </main>
+  </body>
+</html>

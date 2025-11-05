@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Delete Account — Secure Cloud</title>
+    <link rel="stylesheet" href="delete-account.css" />
+  </head>
+  <body>
+    <main class="delete-page">
+      <section class="card warning-card">
+        <h2>Delete your account</h2>
+        <p class="muted">
+          This action <strong>will permanently delete</strong> your account, all
+          files, secrets and data. This cannot be undone.
+        </p>
+
+        <div class="steps">
+          <label class="label">Tell us why (optional)</label>
+          <select id="delete-reason">
+            <option value="">— Select a reason —</option>
+            <option value="privacy">Privacy concerns</option>
+            <option value="switch">Switching to another app</option>
+            <option value="unused">Not using it</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label class="label">Confirm your email</label>
+          <input id="delete-email" type="email" placeholder="you@example.com" />
+
+          <label class="label">Enter your password</label>
+          <input
+            id="delete-password"
+            type="password"
+            placeholder="Your account password"
+          />
+
+          <div class="muted small">
+            Tip: After deletion you will be logged out and all your data will be
+            removed.
+          </div>
+
+          <div class="actions">
+            <button id="cancel-delete" class="btn-outline">Cancel</button>
+            <button id="start-delete" class="btn-danger">
+              Delete My Account
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Confirm modal -->
+    <div id="confirm-delete-modal" class="modal hidden">
+      <div class="modal-card slide-up">
+        <h3>Are you absolutely sure?</h3>
+        <p class="muted">
+          Type <strong>DELETE</strong> in the box to confirm permanent deletion.
+        </p>
+        <input id="confirm-word" placeholder="Type DELETE to confirm" />
+        <div class="modal-actions">
+          <button id="confirm-cancel" class="btn-outline">Cancel</button>
+          <button id="confirm-go" class="btn-danger">
+            Yes, delete account
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- small toast container (if you don't have global) -->
+    <div id="toast-root"></div>
+
+    <script src="delete-account.js"></script>
+  </body>
+</html>

@@ -1,0 +1,290 @@
+/* Reset + base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.app-title {
+  font-size: 1.8rem;
+  color: #2b6cb0;
+  letter-spacing: 0.5px;
+}
+.tagline {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Auth Box */
+.auth-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.auth-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.auth-box input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.auth-box button {
+  background: #2b6cb0;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.auth-box button:hover {
+  background: #2c5282;
+}
+
+/* Switch text */
+.switch-text {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.switch-text a {
+  color: #2b6cb0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Small screens tweak */
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.5rem;
+  }
+  .auth-box {
+    padding: 20px;
+  }
+}
+
+/* Add transitions & fade-in motion */
+body {
+  background: #f5f7fa;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.auth-box:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.auth-box input,
+.auth-box button {
+  transition: all 0.25s ease;
+}
+
+.auth-box input:focus {
+  border-color: #2b6cb0;
+  box-shadow: 0 0 4px rgba(43, 108, 176, 0.2);
+  outline: none;
+}
+
+.auth-box button:active {
+  transform: scale(0.98);
+}
+
+.switch-text a {
+  position: relative;
+}
+.switch-text a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #2b6cb0;
+  transition: width 0.3s ease;
+}
+.switch-text a:hover::after {
+  width: 100%;
+}
+
+/* ✅ Popup base style */
+.popup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 16px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateX(150%);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 999;
+}
+
+.popup.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#popup-message {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* ✅ Let's Go button style */
+#popup-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 114, 255, 0.4);
+  animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+/* ✅ Smooth pulse animation to draw attention */
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 114, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.07);
+    box-shadow: 0 0 20px rgba(0, 114, 255, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 114, 255, 0.4);
+  }
+}
+
+/* ✅ Hover effect */
+#popup-btn:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  transform: scale(1.1);
+}
+
+/* Mobile tweak */
+@media (max-width: 600px) {
+  .popup {
+    bottom: 20px;
+    right: 15px;
+    left: 15px;
+    font-size: 0.9rem;
+  }
+}
+/* Error state for popup */
+.popup.error {
+  border-color: rgba(255, 80, 80, 0.25);
+  background: rgba(255, 80, 80, 0.06);
+}
+
+.popup.error #popup-btn {
+  background: linear-gradient(90deg, #ff5f6d, #ff2d55);
+  box-shadow: 0 0 12px rgba(255, 45, 85, 0.45);
+  animation: pulseRed 1.5s ease-in-out infinite;
+}
+.popup.error #popup-message {
+  color: #ff3b30;
+  font-weight: 600;
+}
+.popup.success #popup-message{
+  color: #22c55e;
+  font-weight: 600;
+}
+@keyframes pulseRed {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(255, 45, 85, 0.35);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 45, 85, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(255, 45, 85, 0.35);
+  }
+}

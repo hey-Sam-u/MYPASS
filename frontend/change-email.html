@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Change Email</title>
+    <link rel="stylesheet" href="change-email.css" />
+  </head>
+  <body>
+    <div class="change-email-container">
+      <h2>✉️ Change Email</h2>
+
+      <form id="change-email-form" class="card">
+        <label>Current Password</label>
+        <input
+          id="current-pass"
+          type="password"
+          placeholder="Enter current password"
+          required
+        />
+
+        <label>New Email</label>
+        <input
+          id="new-email"
+          type="email"
+          placeholder="new@example.com"
+          required
+        />
+
+        <label>Confirm New Email</label>
+        <input
+          id="confirm-email"
+          type="email"
+          placeholder="new@example.com"
+          required
+        />
+
+        <button type="submit" class="btn-primary">Update Email</button>
+      </form>
+    </div>
+
+    <!-- Custom popup -->
+    <div id="ce-popup" class="popup hidden">
+      <div class="popup-card">
+        <h3 id="ce-popup-title"></h3>
+        <p id="ce-popup-msg"></p>
+        <div class="popup-actions">
+          <button id="ce-popup-ok" class="btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="change-email.js"></script>
+  </body>
+</html>

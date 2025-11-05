@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #003973, #e5e5be);
+  color: #222;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.advantages {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+.adv-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: 0.6s ease;
+}
+
+.adv-card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.adv-card h2 {
+  color: #003973;
+  margin-bottom: 0.5rem;
+}
+
+.adv-card p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #003973;
+  color: #fff;
+  margin-top: 1rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+footer button {
+  margin-top: 1rem;
+  background: #fff;
+  color: #003973;
+  font-weight: 600;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+footer button:hover {
+  background: #f1f1f1;
+}
+
+/* Responsive */
+@media (min-width: 700px) {
+  .advantages {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem 4rem;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+}

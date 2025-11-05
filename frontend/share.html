@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Share App</title>
+    <link rel="stylesheet" href="share.css" />
+  </head>
+  <body>
+    <div class="share-container">
+      <h2>Share This App 🔗</h2>
+      <p class="trust-text">
+        🚀 Experience secure cloud storage like never before!<br />
+        Store your secrets safely with 100% encryption. Try it now 👇
+      </p>
+
+      <div class="share-buttons">
+        <button class="share-btn copy">Copy Link</button>
+        <button class="share-btn whatsapp">WhatsApp</button>
+        <button class="share-btn facebook">Facebook</button>
+        <button class="share-btn instagram">Instagram</button>
+        <button class="share-btn bluetooth">Bluetooth</button>
+      </div>
+    </div>
+
+    <!-- Custom Popup -->
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <p id="popup-message"></p>
+        <button id="popup-ok">OK</button>
+      </div>
+    </div>
+
+    <script src="share.js"></script>
+  </body>
+</html>

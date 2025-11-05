@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Cloud</title>
+
+    <!-- link CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ✅ Smooth Popup -->
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <p id="popup-message"></p>
+        <button id="popup-btn">Let's Go 🚀</button>
+      </div>
+    </div>
+
+    <!-- App Wrapper -->
+    <div class="app-container">
+      <!-- Header / Logo -->
+      <header>
+        <h1 class="app-title">Secure Cloud</h1>
+        <p class="tagline">Your private encrypted space</p>
+      </header>
+
+      <!-- Auth Section -->
+      <main id="auth-section">
+        <div class="auth-box">
+          <h2>Login</h2>
+          <form id="login-form">
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </form>
+
+          <p class="switch-text">
+            Don’t have an account?
+            <a href="register.html" id="show-register">Register</a>
+          </p>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>🔒 End-to-End Encrypted Storage</p>
+      </footer>
+    </div>
+
+    <!-- JS -->
+    <script src="index.js"></script>
+  </body>
+</html>

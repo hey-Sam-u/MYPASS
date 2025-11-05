@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Cloud | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="welcome-box">
+        <h1 class="welcome-text"></h1>
+      </div>
+
+      <div class="user-info">
+        <p class="email-text"></p>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+
+    <!-- ===== Upload Card (paste below top navbar) ===== -->
+    <section class="upload-section">
+      <div class="upload-card">
+        <div class="upload-left">
+          <h3>Upload files (encrypted)</h3>
+          <p class="muted">
+            Files are encrypted in your browser 🔒 — we only store encrypted
+            bytes.
+          </p>
+
+          <div id="drop-area" class="drop-area">
+            <p>Drag & drop files here or</p>
+            <input id="file-input" type="file" multiple />
+            <label for="file-input" class="choose-btn">Choose files</label>
+          </div>
+
+          <div id="upload-list" class="upload-list"></div>
+
+          <div class="hint">
+            Tip: Use a strong passphrase when prompted. Keep it safe — needed to
+            decrypt files.
+          </div>
+        </div>
+
+        <div class="upload-right">
+          <div class="status-card">
+            <h4>Recent activity</h4>
+            <p id="recent-status">No uploads yet</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Passphrase Modal (hidden) ===== -->
+    <div id="passphrase-modal" class="modal hidden">
+      <div class="modal-card">
+        <h4>Encryption passphrase</h4>
+        <p class="muted">
+          Enter a passphrase to encrypt files. This is not sent to the server.
+        </p>
+        <input
+          id="passphrase-input"
+          type="password"
+          placeholder="Enter passphrase"
+        />
+        <div class="modal-actions">
+          <button id="passphrase-cancel" class="btn-outline">Cancel</button>
+          <button id="passphrase-ok" class="btn-primary">
+            Encrypt & Upload
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="file-list-section">
+      <h2>My Files</h2>
+      <div id="file-list" class="file-list"></div>
+    </section>
+
+    <!-- ===== Custom Popup Containers ===== -->
+    <div id="popup-container"></div>
+
+    <!-- ===== File Preview Modal ===== -->
+    <div id="file-preview-modal" class="file-preview hidden">
+      <div class="file-preview-card">
+        <span class="close-preview">&times;</span>
+        <div class="file-preview-content">
+          <p class="preview-loading">Loading preview...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Download Option Modal ===== -->
+    <div id="download-option-modal" class="modal hidden">
+      <div class="modal-card slide-down">
+        <span class="close-download">&times;</span>
+        <h4>Download Options</h4>
+        <p class="muted">Choose how you want to download the file:</p>
+        <div class="modal-actions">
+          <button id="download-encrypted" class="btn-outline">Encrypted</button>
+          <button id="download-decrypted" class="btn-primary">Decrypted</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Custom Download Passphrase Modal === -->
+    <div id="download-passphrase-modal" class="custom-modal hidden">
+      <div class="modal-card">
+        <h3>Enter Passphrase to Decrypt & Download</h3>
+        <input
+          id="download-pass-input"
+          type="password"
+          placeholder="Enter your passphrase..."
+        />
+        <div class="modal-actions">
+          <button id="download-pass-cancel" class="btn-outline">Cancel</button>
+          <button id="download-pass-ok" class="btn-primary">
+            Decrypt & Download
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- password section -->
+    <section class="vault-section">
+      <div class="vault-card">
+        <h3>Secret Vault</h3>
+        <button id="vault-add-btn" class="btn-primary">Add password</button>
+        <div id="vault-list" class="vault-list"></div>
+      </div>
+    </section>
+
+    <!-- Add entry modal (simple) -->
+    <div id="vault-add-modal" class="modal hidden">
+      <div class="modal-card">
+        <span class="close-vault">&times;</span>
+        <h4>Add password entry</h4>
+        <input id="vault-title" placeholder="Name e.g. State Bank of India" />
+        <input id="vault-login" placeholder="Login (optional)" />
+        <input id="vault-password" placeholder="Password (will be encrypted)" />
+        <textarea id="vault-notes" placeholder="Notes (optional)"></textarea>
+        <div class="modal-actions">
+          <button id="vault-cancel" class="btn-outline">Cancel</button>
+          <button id="vault-save" class="btn-primary">Encrypt & Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Edit Secret Modal ===== -->
+    <div id="edit-secret-modal" class="modal hidden">
+      <div class="modal-card slide-down">
+        <span class="close-edit">&times;</span>
+        <h4>Edit Secret</h4>
+        <input id="edit-secret-name" type="text" placeholder="Name" />
+        <textarea
+          id="edit-secret-value"
+          placeholder="Password / Notes"
+        ></textarea>
+        <div class="modal-actions">
+          <button id="save-edit" class="btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Custom Delete Confirmation Modal ===== -->
+    <div id="delete-confirm-modal" class="modal hidden">
+      <div class="modal-card slide-up">
+        <h3>⚠️ Delete Secret</h3>
+        <p>Are you sure you want to delete this secret?</p>
+        <div class="modal-actions">
+          <button id="delete-cancel" class="btn-outline">Cancel</button>
+          <button id="delete-confirm" class="btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR WRAPPER -->
+    <div id="vault-sidebar">  
+      <div class="sidebar-content">
+        <h3>🔐 Vault Menu</h3>
+        <ul>
+          <li><a href="change-password.html">Change Password🔑</a></li>
+          <li><a href="change-email.html">Change Email📩</a></li>
+          <li><a href="change-name.html">Change Name ✏</a></li>
+          <li><a href="privacy.html">Privacy Policy⛔</a></li>
+          <li><a href="advantages.html">Advantages📛</a></li>
+          <li><a href="share.html">Share 🤝</a></li>
+          <li><a href="delete-account.html">Delete Account📵</a></li>
+        </ul>
+      </div>
+      <div id="vault-toggle">
+        <span class="arrow-icon">▶</span>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

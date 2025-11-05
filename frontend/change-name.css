@@ -1,0 +1,157 @@
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #003973, #e5e5be);
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+}
+
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  color: #003973;
+}
+
+.subtext {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.note {
+  display: block;
+  margin-top: 0.5rem;
+  color: #444;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+}
+
+button {
+  background: #003973;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #0057b8;
+  transition: 0.2s;
+}
+
+/* ✅ Popup */
+.popup {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 85%;
+  max-width: 320px;
+}
+
+.popup-box p {
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.popup-actions button {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#closePopup {
+  background-color: #003973;
+  color: white;
+}
+
+#closePopup:hover {
+  background-color: #0057b8;
+}
+
+#goBack {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+#goBack:hover {
+  background-color: #ccc;
+}
+
+/* ✅ Responsive */
+@media (max-width: 500px) {
+  .card {
+    padding: 1.5rem;
+  }
+  input,
+  button {
+    font-size: 0.95rem;
+  }
+  .popup-box {
+    padding: 1.5rem;
+  }
+}

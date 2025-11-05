@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecureCloud | Register</title>
+    <link rel="stylesheet" href="register.css" />
+  </head>
+  <body>
+    <div class="register-container">
+      <div class="register-box">
+        <h2>Create Account</h2>
+        <form id="registerForm">
+          <div class="input-group">
+            <label>Full Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label>Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label>Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn">Register</button>
+        </form>
+
+        <p class="login-link">
+          Already have an account?
+          <a href="index.html">Login here</a>
+        </p>
+
+        <!-- Popup message -->
+        <div id="popup" class="popup"></div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("registerForm");
+      const popup = document.getElementById("popup");
+
+      function showPopup(msg, success = false) {
+        popup.textContent = msg;
+        popup.style.background = success ? "#38a169" : "#e53e3e";
+        popup.classList.add("show");
+        setTimeout(() => popup.classList.remove("show"), 2500);
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        try {
+          const res = await fetch("http://localhost:5000/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password }),
+          });
+
+          const data = await res.json();
+          if (res.ok) {
+            showPopup(data.msg, true);
+            form.reset();
+          } else {
+            showPopup(data.msg);
+          }
+        } catch (err) {
+          showPopup("Server error. Try again later.");
+        }
+      });
+    </script>
+  </body>
+</html>
