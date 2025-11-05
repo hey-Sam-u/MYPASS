@@ -772,19 +772,12 @@ app.post("/api/delete-account", verifyToken, (req, res) => {
     return res.status(500).json({ msg: "Server error" });
   }
 });
-
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Serve frontend (index.html and others)
-app.use(express.static(path.join(__dirname, "../frontend"))); // ya jaha tera index.html hai
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+const frontendPath =path.join(__dirname, "../frontend");
+app.use(express.static(frontendPath));
+app.get("*",(req, res)=>{
+  res.sendFile(path.join(frontendPath,"index.html"));
 });
+
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✅ Server started on port ${PORT}`));
