@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const token = localStorage.getItem("token") || "";
 
-      const res = await fetch("http://localhost:5000/api/change-email", {
+      const res = await fetch("/api/change-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -114,7 +114,7 @@
     confirmGo.innerText = "Deleting...";
 
     try {
-      const res = await fetch("http://localhost:5000/api/delete-account", {
+      const res = await fetch("/api/delete-account", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

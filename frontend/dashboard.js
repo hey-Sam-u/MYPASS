@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Use 'Bearer <token>' header (common standard)
-  fetch("http://localhost:5000/api/dashboard", {
+  fetch("/api/dashboard", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -197,7 +197,7 @@ async function encryptArrayBuffer(key, iv, arrayBuffer) {
 
       // send to server
       const token = localStorage.getItem("token") || "";
-      const res = await fetch("http://localhost:5000/api/upload", {
+      const res = await fetch("/api/upload", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -269,7 +269,7 @@ async function encryptArrayBuffer(key, iv, arrayBuffer) {
 async function loadFiles() {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/api/files", {
+    const res = await fetch("/api/files", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -374,7 +374,7 @@ document.addEventListener("click", async (e) => {
     if (!confirmed) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/files/${fileId}`, {
+      const res = await fetch(`/api/files/${fileId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -405,7 +405,7 @@ document.addEventListener("click", async (e) => {
   // 1) Fetch metadata (salt, iv, mime, name)
   try {
     const metaRes = await fetch(
-      `http://localhost:5000/api/files/${fileId}/meta`,
+      `/api/files/${fileId}/meta`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -462,7 +462,7 @@ document.addEventListener("click", async (e) => {
     const key = await deriveKeyFromPassphrase(passphrase, saltBuf);
 
     // 4) fetch encrypted blob
-    const fileRes = await fetch(`http://localhost:5000/api/files/${fileId}`, {
+    const fileRes = await fetch(`/api/files/${fileId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!fileRes.ok) {
@@ -562,7 +562,7 @@ document.addEventListener("click", async (e) => {
   // === ENCRYPTED DOWNLOAD ===
   document.getElementById("download-encrypted").onclick = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/files/${fileId}`, {
+      const res = await fetch(`/api/files/${fileId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Download failed");
@@ -590,14 +590,14 @@ document.addEventListener("click", async (e) => {
 
       // fetch metadata
       const metaRes = await fetch(
-        `http://localhost:5000/api/files/${fileId}/meta`,
+        `/api/files/${fileId}/meta`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const meta = await metaRes.json();
 
       const salt = base64ToBuf(meta.salt);
       const key = await deriveKeyFromPassphrase(passphrase, salt);
-      const fileRes = await fetch(`http://localhost:5000/api/files/${fileId}`, {
+      const fileRes = await fetch(`/api/files/${fileId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const encBuf = await fileRes.arrayBuffer();
@@ -680,7 +680,7 @@ async function showDownloadPassphraseModal() {
 async function loadVault() {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5000/api/passwords", {
+    const res = await fetch("/api/passwords", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -763,7 +763,7 @@ document.getElementById("vault-save").addEventListener("click", async () => {
   const ivB64 = bufToBase64(iv);
 
   const token = localStorage.getItem("token");
-  const res = await fetch("http://localhost:5000/api/passwords", {
+  const res = await fetch("/api/passwords", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -796,7 +796,7 @@ document.addEventListener("click", async (e) => {
   const token = localStorage.getItem("token");
 
   const metaRes = await fetch(
-    `http://localhost:5000/api/passwords/${id}/meta`,
+    `/api/passwords/${id}/meta`,
     {
       headers: { Authorization: `Bearer ${token}` },
     }
@@ -817,7 +817,7 @@ document.addEventListener("click", async (e) => {
   try {
     const saltBuf = base64ToBuf(meta.salt);
     const key = await deriveKeyFromPassphrase(passphrase, saltBuf);
-    const fileRes = await fetch(`http://localhost:5000/api/passwords/${id}`, {
+    const fileRes = await fetch(`/api/passwords/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const encBase64 = await fileRes.text();
@@ -907,7 +907,7 @@ document.addEventListener("click", async (e) => {
 
   // ✅ Proceed with delete
   const token = localStorage.getItem("token");
-  const res = await fetch(`http://localhost:5000/api/passwords/${id}`, {
+  const res = await fetch(`/api/passwords/${id}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -928,7 +928,7 @@ document.addEventListener("click", async (e) => {
   try {
     // meta fetch (title/login/notes) for prefill
     const metaRes = await fetch(
-      `http://localhost:5000/api/passwords/${id}/meta`,
+      `/api/passwords/${id}/meta`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -1060,7 +1060,7 @@ function showEditSecretModal(secret) {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:5000/api/passwords/${secret.id}`,
+        `/api/passwords/${secret.id}`,
         {
           method: "PUT",
           headers: {
